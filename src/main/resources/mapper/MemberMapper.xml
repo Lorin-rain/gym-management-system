@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gym.mapper.MemberMapper">
+    <insert id="insertMember">
+        INSERT INTO member (member_account, member_name, member_gender, member_age, member_height,
+        member_weight, member_phone, card_time, card_class,
+        card_next_class)
+        VALUES (#{memberAccount}, #{memberName}, #{memberGender}, #{memberAge}, #{memberHeight},
+        #{memberWeight}, #{memberPhone}, #{cardTime}, #{cardClass}, #{cardNextClass})
+    </insert>
+    <update id="updateMemberByMemberAccount">
+        UPDATE member
+        SET member_account  = #{memberAccount},
+        member_password = #{memberPassword},
+        member_name     = #{memberName},
+        member_gender   = #{memberGender},
+        member_age      = #{memberAge},
+        member_height   = #{memberHeight},
+        member_weight   = #{memberWeight},
+        member_phone    = #{memberPhone},
+        card_class      = #{cardClass},
+        card_next_class = #{cardNextClass}
+        WHERE member_account = #{memberAccount}
+    </update>
+    <delete id="deleteByMemberAccount">
+        DELETE
+        FROM member
+        WHERE member_account = #{memberAccount}
+    </delete>
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*) from member;
+    </select>
+    <select id="findAll" resultType="member">
+        select * from member
+    </select>
+    <select id="selectByMemberAccount" resultType="member">
+        SELECT *
+        FROM member
+        WHERE member_account = #{memberAccount}
+    </select>
+    <select id="selectByAccountAndPassword" resultType="member">
+        SELECT *
+        FROM member
+        WHERE member_account = #{memberAccount}
+        AND member_password = #{memberPassword}
+    </select>
+</mapper>

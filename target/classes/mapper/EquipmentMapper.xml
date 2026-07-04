@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gym.mapper.EquipmentMapper">
+    <insert id="insertEquipment">
+        INSERT INTO equipment (equipment_id, equipment_name, equipment_location, equipment_status, equipment_message)
+        VALUES (#{equipmentId}, #{equipmentName}, #{equipmentLocation}, #{equipmentStatus}, #{equipmentMessage})
+    </insert>
+    <update id="updateEquipmentByEquipmentId">
+        UPDATE equipment
+        SET equipment_id   = #{equipmentId},
+        equipment_name     = #{equipmentName},
+        equipment_location = #{equipmentLocation},
+        equipment_status   = #{equipmentStatus},
+        equipment_message  = #{equipmentMessage}
+        WHERE equipment_id = #{equipmentId}
+    </update>
+    <delete id="deleteByEquipmentId">
+        DELETE
+        FROM equipment
+        WHERE equipment_id = #{equipmentId}
+    </delete>
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*) from equipment
+    </select>
+    <select id="findAll" resultType="equipment">
+        select * from equipment
+    </select>
+    <select id="selectByEquipmentId" resultType="equipment">
+        SELECT *
+        FROM equipment
+        WHERE equipment_id = #{equipmentId}
+    </select>
+</mapper>

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gym-management-system
+  datasource:
+    url: jdbc:mysql://localhost:3306/gym_management_system
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+mybatis:
+  type-aliases-package: com.gym.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+deepseek:
+  api:
+    key: "sk-3934ffdc2092474bbe942cfdcbf3521a"
+    url: "https://api.deepseek.com/v1/chat/completions"
+    model: "deepseek-chat"

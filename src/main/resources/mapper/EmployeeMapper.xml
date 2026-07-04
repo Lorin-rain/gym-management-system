@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gym.mapper.EmployeeMapper">
+    <insert id="insertEmployee">
+        INSERT INTO employee (employee_account,
+        employee_name, employee_gender,
+        employee_age,
+        entry_time, staff, employee_message)
+        VALUES (#{employeeAccount},
+        #{employeeName}, #{employeeGender},
+        #{employeeAge}, #{entryTime},
+        #{staff}, #{employeeMessage})
+    </insert>
+    <update id="updateEmployeeByEmployeeAccount">
+        UPDATE employee
+        SET employee_account = #{employeeAccount},
+        employee_name = #{employeeName},
+        employee_gender = #{employeeGender},
+        employee_age = #{employeeAge},
+        staff = #{staff},
+        employee_message=#{employeeMessage}
+        WHERE employee_account = #{employeeAccount}
+    </update>
+    <delete id="deleteByEmployeeAccount">
+        delete from employee where employee_account = #{employeeAccount}
+    </delete>
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*) from employee
+    </select>
+    <select id="findAll" resultType="employee">
+        select * from employee
+    </select>
+    <select id="selectByEmployeeAccount" resultType="employee">
+        select * from employee where employee_account = #{employeeAccount}
+    </select>
+</mapper>
