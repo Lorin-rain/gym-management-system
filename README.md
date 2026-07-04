@@ -6,3 +6,5 @@
 员可查看/修改个人信息、报名课程，并使用内置 DeepSeek 聊天
 功能获取训练与饮食建议。
 
+# 技术栈
+Spring Boot + MyBatis + MySQL+deepseek API
